@@ -56,8 +56,16 @@
         font-size: 2rem;
     }
     
+    .features {
+        padding: 0 15px;
+        justify-content: center;
+    }
+    
     .feature-card {
-        flex: 0 0 100%;
+        flex: 0 0 calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 450px;
     }
     
     .form-row {
@@ -102,5 +110,9 @@
     
     .form-container {
         padding: 20px 15px;
+    }
+    
+    .feature-card {
+        max-width: 100%;
     }
 }
