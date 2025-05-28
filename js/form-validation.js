@@ -114,13 +114,27 @@ class FormValidator {
             }
 
             // Validar CEP
-            const cep = this.cepInput.value;
-            if (cep.replace(/\D/g, '').length !== 8) {
-                this.showError('cep-error', 'Por favor, insira um CEP válido');
-                isValid = false;
-            } else {
-                this.clearError('cep-error');
+            'use strict'; //modo restrito
+
+            //valida se o CEP é valido
+            const eNumero = (numero) => /^[0-9]+$/.test(numero);
+            const cepValido = (cep) => cep.length === 8 && eNumero(cep);
+
+            const pesquisaCep = async () => {
+                limparFormulario();
+                const url = `HTTP://viacep.com.br/ws/${cep.value}/json/`;
+                
             }
+
+            //função de limpeza do form
+            limparFormulario = () => {
+                document.getElementById('rua').value = '';
+                document.getElementById('bairro').value = '';
+                document.getElementById('cidade').value = '';
+                document.getElementById('estado').value = '';
+            }
+
+             
 
             // Validar rua
             const rua = document.getElementById('rua').value;
