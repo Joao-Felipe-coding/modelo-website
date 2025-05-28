@@ -123,6 +123,21 @@ class FormValidator {
             const pesquisaCep = async () => {
                 limparFormulario();
                 const url = `HTTP://viacep.com.br/ws/${cep.value}/json/`;
+
+                if (cepValido(cep.value)) {
+                    const dados = await fetch(url);
+                    const address = await dados.json();
+
+                    //retorna um valor booleano indicando se o objetivo possui a propriedade especifica no parenteses
+                    if (Object.prototype.hasOwnProperty.call(address, 'erro')) {
+                        alert('CEP não encontrado');
+                    } else {
+                        preencherFormulario(address);
+                    }
+                }
+            }
+
+            preencherFormulario = (endereco) => {
                 
             }
 
@@ -134,7 +149,7 @@ class FormValidator {
                 document.getElementById('estado').value = '';
             }
 
-             
+
 
             // Validar rua
             const rua = document.getElementById('rua').value;
