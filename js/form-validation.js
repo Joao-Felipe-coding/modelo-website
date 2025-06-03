@@ -138,7 +138,10 @@ class FormValidator {
             }
 
             preencherFormulario = (endereco) => {
-                
+                document.getElementById('rua').value = endereco.logradouro
+                document.getElementById('bairro').value = endereco.bairro;
+                document.getElementById('cidade').value = endereco.cidade;
+                document.getElementById('estado').value = endereco.estado;
             }
 
             //função de limpeza do form
